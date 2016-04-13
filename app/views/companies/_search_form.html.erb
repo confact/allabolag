@@ -1,0 +1,19 @@
+<%= simple_form_for @company, :url => '/companies/result', :method => :post, remote: true, input_html: {multipart: true}, :html => { :'data-type' => 'html', :id => 'search_form' } do |f| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this offer from being saved:</h2>
+
+      <ul>
+      <% @company.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.input :name, label: 'Namn' %>
+
+  <div class="actions">
+    <%= f.button :submit, "Sök" %>
+  </div>
+<% end %>

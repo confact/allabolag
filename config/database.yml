@@ -1,0 +1,33 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+default: &default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
+development:
+  adapter: mysql2
+  host: localhost
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  database: moveit-dev
+  pool: 30
+  wait_timeout: 30
+
+test:
+  adapter: mysql2
+  host: localhost
+  encoding: utf8
+  pool: 10
+  username: <%= ENV['MYSQL_USER'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  database: test<%= ENV['TEST_ENV_NUMBER'] %>
+  socket: /var/run/mysqld/mysqld.sock
+
+production:
+  <<: *default
+  database: db/production.sqlite3
