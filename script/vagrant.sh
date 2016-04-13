@@ -7,7 +7,8 @@ sudo apt-get install -y nginx python-software-properties git openjdk-7-jdk g++
 
 sudo apt-get install software-properties-common
 sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
-sudo add-apt-repository 'deb [arch=amd64,i386] http://ftp.ddg.lth.se/mariadb/repo/10.0/debian jessie main'
+sudo add-apt-repository 'deb [arch=amd64,i386] http://ftp.ddg.lth.se/mariadb/repo/10.0/debian wheezy main'
+sudo apt-get update
 
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password test123123'
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password test123123'
